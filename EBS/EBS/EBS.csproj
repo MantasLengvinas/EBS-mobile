@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Components\" />
+    <None Remove="Assets\" />
+    <None Remove="Assets\Styles\" />
+    <None Remove="Models\" />
+    <None Remove="Models\Dtos\" />
+    <None Remove="Services\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Microsoft.AspNetCore.Http" />
+    <None Remove="System.Net.Http.Json" />
+    <None Remove="Models\General\" />
+    <None Remove="Helpers\" />
+    <None Remove="Microcharts.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Assets\Styles\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Dtos\" />
+    <Folder Include="Services\" />
+    <Folder Include="Models\General\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+</Project>

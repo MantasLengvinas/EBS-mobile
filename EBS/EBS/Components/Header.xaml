@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EBS.Components.Header">
+    <ContentView.Resources>
+        <Style x:Key="btn" TargetType="Button">
+            <Setter Property="TextColor" Value="#f5f5f5" />
+        </Style>
+    </ContentView.Resources>
+
+    <FlexLayout BackgroundColor="#172e62" HeightRequest="60" Position="Relative" AlignContent="Center" AlignItems="Center" StyleClass="button" Padding="5,0">
+        <Button Style="{StaticResource btn}" Text="Deklaravimas ir mokėjimas" Margin="10,0" />
+        <Button Clicked="NavigateToHistory" Style="{StaticResource btn}" Text="Vartotojas" Margin="10,0" />
+        <Button Clicked="Logout" Style="{StaticResource btn}" Text="Atsijungti" Margin="10,0" />
+    </FlexLayout>
+</ContentView>
+
+ 

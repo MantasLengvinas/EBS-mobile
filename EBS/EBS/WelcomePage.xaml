@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EBS.WelcomePage">
+    <TabbedPage.Resources>
+        <Style x:Key="btn" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#00D3B7" />
+            <Setter Property="TextColor" Value="#f1f1f1"/>
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="Margin" Value="50, 10"/>
+        </Style>
+
+    </TabbedPage.Resources>
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Prisijungimas">
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            <Label Text="PRISIJUNKITE" HorizontalTextAlignment="Center" FontSize="Large" Margin="0,0,0,20" TextColor="#646464" />
+            <Entry Keyboard="Plain" x:Name="emailEntry" Placeholder="El. paštas" HorizontalTextAlignment="Center" Margin="30,5" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="False" />
+            <Entry Keyboard="Plain" x:Name="passwordEntry" Placeholder="Slaptažodis" IsPassword="True" HorizontalTextAlignment="Center" Margin="30, 5" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="False" />
+            <Button Style="{StaticResource btn}" Clicked="Login" Text="Prisijungti" />
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Registracija">
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            <Label Text="REGISTRACIJA" HorizontalTextAlignment="Center" FontSize="Large" Margin="0,0,0,20" TextColor="#646464" />
+            <Entry Placeholder="Vardas ir pavardė" x:Name="fullNameEntry" Keyboard="Plain" HorizontalTextAlignment="Center" Margin="30,5" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="False" />
+            <Entry Keyboard="Plain" x:Name="registerEmail" Placeholder="El. paštas" HorizontalTextAlignment="Center" Margin="30,5" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="False" />
+            <Entry Keyboard="Plain" x:Name="registerPassword" Placeholder="Slaptažodis" IsPassword="True" HorizontalTextAlignment="Center" Margin="30, 5" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="False" />
+            <Grid Margin="30,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Ar esate verslo klientas?" TextColor="#646464" VerticalTextAlignment="Center" />
+                <CheckBox Grid.Column="1" />
+            </Grid>
+            <Button Style="{StaticResource btn}" Clicked="Register" Text="Registruotis" />
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:EBS.Helpers"
+    x:Class="EBS.Components.AddressBox"
+    x:Name="AddressBoxContent">
+    <ContentView.Resources>
+        <helpers:InverseBoolConverter x:Key="boolConverter" />
+        <Style x:Key="smallLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="#646464"/>
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="tableValue" TargetType="Label">
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="TextColor" Value="#656565" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="headerValue" TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="#646464" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="addressValue" TargetType="Label">
+            <Setter Property="TextColor" Value="#646464" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="BackgroundColor" Value="#f1f1f1" />
+        </Style>
+        <Style x:Key="headerRow" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="#f1f1f1" />
+
+        </Style>
+        <Style x:Key="btn" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#00D3B7" />
+            <Setter Property="TextColor" Value="#f1f1f1"/>
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="Margin" Value="0, 0, 0, 5"/>
+        </Style>
+    </ContentView.Resources>
+
+    <StackLayout>
+        <Label Style="{StaticResource addressValue}" Text="{Binding FullAddress}" />
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <Label Style="{StaticResource headerValue}"  Grid.Column="0" Text="Data" />
+            <Label Style="{StaticResource headerValue}"  Grid.Column="1" Text="Sąnaudos" />
+            <Label Style="{StaticResource headerValue}"  Grid.Column="2" Text="Tarifas" />
+            <Label Style="{StaticResource headerValue}"  Grid.Column="3" Text="Suma" />
+        </Grid>
+        <ListView x:Name="UsagesList" HeightRequest="150" ItemsSource="{Binding Usages}" VerticalOptions="Fill">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"  />
+                                </Grid.RowDefinitions>
+                                <Label Style="{StaticResource tableValue}" Grid.Column="0" Text="{Binding OnDate, StringFormat='{0:yyyy-MM-dd}'}" />
+                                <Label Style="{StaticResource tableValue}" Grid.Column="1" Text="{Binding ElectricityDue}" />
+                                <Label Style="{StaticResource tableValue}" Grid.Column="2" Text="{Binding PaidTariff}" />
+                                <Label Style="{StaticResource tableValue}" Grid.Column="3" Text="{Binding AmountDue}" />
+                                <Label Style="{StaticResource tableValue}" Grid.ColumnSpan="4" Text="{Binding NoData}" IsVisible="{Binding ShowNoDataMessage}" />
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Clicked="OpenAddress" Style="{StaticResource btn}" Text="Peržiūrėti" />
+    </StackLayout>
+</ContentView>
+

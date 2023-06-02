@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:helpers="clr-namespace:EBS.Helpers"
+    x:Class="EBS.UserPage">
+        <ContentPage.Resources>
+        <helpers:InverseBoolConverter x:Key="boolConverter" />
+        <Style x:Key="smallLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="#646464"/>
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="tableValue" TargetType="Label">
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="TextColor" Value="#656565" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="headerValue" TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="#646464" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="addressValue" TargetType="Label">
+            <Setter Property="TextColor" Value="#646464" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="BackgroundColor" Value="#f1f1f1" />
+        </Style>
+        <Style x:Key="headerRow" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="#f1f1f1" />
+
+        </Style>
+        <Style x:Key="btn" TargetType="Button">
+            <Setter Property="TextColor" Value="#646464"/>
+            <Setter Property="FontSize" Value="Medium" />
+        </Style>
+        <Style x:Key="btn2" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#00D3B7" />
+            <Setter Property="TextColor" Value="#f1f1f1"/>
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="Margin" Value="0, 0, 10, 5"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Grid VerticalOptions="End" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+
+                <Button Clicked="AddAddress" Grid.Column="0" Style="{StaticResource Key=btn2}" Text="Pridėti adresą" Margin="10,10,0,0"/>
+            </Grid>
+
+            <ListView x:Name="PageData" ItemsSource="{Binding Addresses}" HasUnevenRows="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="20" />
+                                        <ColumnDefinition Width="20" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--<Label Grid.Column="0" Style="{StaticResource tableValue}" FontSize="Micro" Text="Aktyvus" Margin="10, 0" IsVisible="{Binding Active}" />
+                                    <Label Grid.Column="0" Style="{StaticResource tableValue}" FontSize="Micro" Text="Neaktyvus" Margin="10, 0" IsVisible="{Binding Active, Converter={StaticResource boolConverter}}" />-->
+                                    <Label Grid.Column="0" Style="{StaticResource tableValue}" Text="{Binding FullAddress}" />
+                                    <Label Grid.Column="1" Style="{StaticResource tableValue}" Text="{Binding ProviderName}" />
+                                    <Button Clicked="DeleteAddress" Grid.Column="2" Style="{StaticResource btn}" Text="X" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
